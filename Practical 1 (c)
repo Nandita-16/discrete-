@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+class SET {
+public:
+    int a[10], n;
+
+    void input(int x){
+        n = x;
+        for(int i=0;i<n;i++) cin >> a[i];
+    }
+
+    bool subset(SET b){
+        for(int i=0;i<n;i++){
+            bool f = false;
+            for(int j=0;j<b.n;j++)
+                if(a[i]==b.a[j]) f = true;
+            if(!f) return false;
+        }
+        return true;
+    }
+};
+
+int main(){
+    SET A,B;
+    int n,m;
+    cin >> n; A.input(n);
+    cin >> m; B.input(m);
+
+    if(A.subset(B)) cout<<"Subset";
+    else cout<<"Not Subset";
+}
