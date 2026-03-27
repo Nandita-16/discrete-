@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void permuteWithRepetition(vector<int> &arr, vector<int> &result, int n, int k) {
+    if (k == 0) {
+        for (int x : result)
+            cout << x << " ";
+        cout << endl;
+        return;
+    }
+
+    for (int i = 0; i < n; i++) {
+        result.push_back(arr[i]);
+        permuteWithRepetition(arr, result, n, k - 1);
+        result.pop_back();  // backtrack
+    }
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3}; // digits
+    vector<int> result;
+    int length = 3; // length of permutation
+
+    permuteWithRepetition(arr, result, arr.size(), length);
+    return 0;
+}
